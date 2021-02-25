@@ -15,8 +15,7 @@ public class Symbol implements ISymbol {
 	/*Setter method for the image of the Symbol object*/
 	@Override
 	public void setImage(String url){
-		ImageIcon imgObj = new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH));
-		this.image=imgObj;
+		this.image= new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH));
 	}
 
 	/*Returns the image of the Symbol object*/

@@ -2,16 +2,16 @@
 import javax.swing.ImageIcon;
 
 public interface ISymbol {
-	// Setter method for the image of the Symbol object
-	public abstract void setImage(String url);
+	/* Setter method for the image of the Symbol object */
+	void setImage(String url);
 
-	// Returns the image of the Symbol object
-	public abstract ImageIcon getImage();
+	/* Returns the image of the Symbol object */
+	ImageIcon getImage();
 
-	// Setter method for the value of the Symbol object
-	public abstract void setValue(int v);
+	/* Setter method for the value of the Symbol object */
+	void setValue(int v);
 
-	// Returns the value of the Symbol object
-	public abstract int getValue();
+	/* Returns the value of the Symbol object */
+	int getValue();
 
 }

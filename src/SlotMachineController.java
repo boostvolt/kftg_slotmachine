@@ -124,7 +124,6 @@ public class SlotMachineController implements Serializable {
 
 			boolean result1 = sym1.compareSymbols(sym1, sym2);
 			boolean result2 = sym1.compareSymbols(sym2, sym3);
-			boolean result3 = sym1.compareSymbols(sym1, sym3);
 
 			double credits = theView.getCredit();
 			spin = false;
@@ -167,7 +166,6 @@ public class SlotMachineController implements Serializable {
 	}
 
 	/* starts and stops threads according to the boolean flag value */
-	@SuppressWarnings("deprecation")
 	public void threadControl(boolean flag) {
 		double betAmnt = theView.getBetAmount();
 		if (betAmnt > 0.00) {
@@ -224,8 +222,7 @@ public class SlotMachineController implements Serializable {
 					label.setIcon(symArray[i].getImage());
 					Thread.sleep(100);
 				} catch (ArrayIndexOutOfBoundsException e) {
-					// when the i becomes 6 an ArrayIndexOutOfBoundsException is
-					// thrown. Then this makes i=0
+					/* when the i becomes 6 an ArrayIndexOutOfBoundsException is thrown. Then this makes i=0 */
 					i = 0;
 				} catch (InterruptedException e) {
 					System.out.println("InterruptedException");

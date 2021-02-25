@@ -5,40 +5,33 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 public class SlotMachineView extends JFrame {
 
 	/* Defining labels */
-	private JLabel lblBetAmountDisplay;
-	private JLabel lblBetAmount;
-	private JLabel lblCreditDisplay;
-	private JLabel lblCredit;
-	private JLabel lblErrMsg;
+	private final JLabel lblBetAmountDisplay;
+	private final JLabel lblBetAmount;
+	private final JLabel lblCreditDisplay;
+	private final JLabel lblCredit;
+	private final JLabel lblErrMsg;
 
 	/* Defining labels for 3 reels */
-	private JLabel lblReel1;
-	private JLabel lblReel2;
-	private JLabel lblReel3;
+	private final JLabel lblReel1;
+	private final JLabel lblReel2;
+	private final JLabel lblReel3;
 
 	/* Defining buttons */
-	private JButton btnAddCoin;
-	private JButton btnBetOne;
-	private JButton btnSpin;
-	private JButton btnStop;
-	private JButton btnReset;
+	private final JButton btnAddCoin;
+	private final JButton btnBetOne;
+	private final JButton btnSpin;
+	private final JButton btnStop;
+	private final JButton btnReset;
 
 	/* Defining borders for selected and unselected stages of the reel labels */
-	private Border unselectedBorder = new MatteBorder(2, 2, 2, 2, Color.GRAY);
-	private Border selectedBorder = new CompoundBorder(new LineBorder(new Color(255, 255, 0, 191), 3),
-			new EmptyBorder(2, 2, 2, 2));
+	private final Border unselectedBorder = new MatteBorder(2, 2, 2, 2, Color.GRAY);
 
-	/*
-	 * Declaring the constructor and calling the relevant methods to execute. In
-	 * here the main JFrame is created
-	 */
+	/* Declaring the constructor and calling the relevant methods to execute. In here the main JFrame is created */
 	public SlotMachineView() {
 		
 		/* Initializing labels */
@@ -70,8 +63,7 @@ public class SlotMachineView extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-		// Adding a window listener to display a confirmation box when clicking
-		// exit button
+		/* Adding a window listener to close the Application when clicking the exit button */
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent event) {
@@ -80,10 +72,7 @@ public class SlotMachineView extends JFrame {
 		});
 	}
 
-	/*
-	 * Setter method for lblErrMsg label. This lblErrMsg label displays all the
-	 * related messages
-	 */
+	/* Setter method for lblErrMsg label. This lblErrMsg label displays all the related messages */
 	public void setErrMsg(String message) {
 		this.lblErrMsg.setText(message);
 	}
@@ -120,15 +109,6 @@ public class SlotMachineView extends JFrame {
 
 	public JButton getBtnReset() {
 		return btnReset;
-	}
-
-	/* Defining getter methods for Borders */
-	public Border getUnselectedBorder() {
-		return unselectedBorder;
-	}
-
-	public Border getSelectedBorder() {
-		return selectedBorder;
 	}
 
 	/* Getter and Setter methods for lblBetAmount and lblCredit labels */
@@ -212,10 +192,8 @@ public class SlotMachineView extends JFrame {
 		mainPanel.setBorder(new EmptyBorder(30, 30, 30, 30));
 	}
 
-	/*
-	 * Disables or enables all the buttons according to the passing boolean flag
-	 * value
-	 */
+
+	/* Disables or enables all the buttons according to the passing boolean flag value */
 	public void buttonControl(boolean flag) {
 		btnAddCoin.setEnabled(flag);
 		btnBetOne.setEnabled(flag);
