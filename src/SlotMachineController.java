@@ -132,7 +132,7 @@ public class SlotMachineController implements Serializable {
 				theView.setBetAmount(INITIALBET);
 				double symbolAmnt = 4.00;
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
-				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
+				double wonCredits = newCredits - credits;
 				theView.setCredit(newCredits);
 				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("3x 7");
@@ -140,14 +140,14 @@ public class SlotMachineController implements Serializable {
 				theView.setBetAmount(INITIALBET);
 				double symbolAmnt = 2.00;
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
-				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
+				double wonCredits = newCredits - credits;
 				theView.setCredit(newCredits);
 				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 			} else if (sym1.getValue() == 7 && sym2.getValue() == 7 || sym2.getValue() == 7 && sym3.getValue() == 7) {
 				theView.setBetAmount(INITIALBET);
 				double symbolAmnt = 2.00;
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
-				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
+				double wonCredits = newCredits - credits;
 				theView.setCredit(newCredits);
 				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("2x 7");
@@ -155,7 +155,7 @@ public class SlotMachineController implements Serializable {
 				theView.setBetAmount(INITIALBET);
 				double symbolAmnt = 1.00;
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
-				double wonCredits = newCredits - (credits + betAmnt);
+				double wonCredits = newCredits - credits;
 				theView.setCredit(newCredits);
 				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("1x 7");

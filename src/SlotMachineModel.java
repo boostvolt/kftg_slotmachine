@@ -19,6 +19,6 @@ public class SlotMachineModel implements Serializable {
 
 	 /* Adds winning credits to the existing credits and returns the new credit value */
 	public double addWinningCoins(double credits, double betAmnt, double symbolAmnt) {
-		return (betAmnt * symbolAmnt) + credits + betAmnt;
+		return (betAmnt * symbolAmnt) + credits;
 	}
 }
