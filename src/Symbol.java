@@ -23,11 +23,7 @@ public class Symbol implements ISymbol {
 	public ImageIcon getImage(){
 		return this.image;
 	}
-	/*Setter method for the value of the Symbol object*/
-	@Override
-	public void setValue(int value){
-		this.value=value;
-	}
+
 	/*Returns the value of the Symbol object*/
 	@Override
 	public int getValue(){
