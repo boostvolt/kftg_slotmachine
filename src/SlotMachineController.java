@@ -1,18 +1,14 @@
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.Serializable;
 import javax.swing.JLabel;
 
 public class SlotMachineController implements Serializable {
 
 	/* Declaring relevant private attributes */
-	private SlotMachineView theView;
-	private SlotMachineModel theModel;
+	private final SlotMachineView theView;
+	private final SlotMachineModel theModel;
 	private static final int INITIALCREDIT = 10;
 	private static final int INITIALBET = 0;
-	private static final String GAMEOVER = "Du hast nichts gewonnen!";
-	private int[] statArray = new int[4]; 
-	//[0]=wins, [1]=loses, [2]=total bets, [3]=total times
+	private static final String GAMEOVER = "Du hast leider nichts gewonnen.";
 
 	/* Declaring thread which is going to use to animate reels */
 	private MyThread thread1;
@@ -97,23 +93,7 @@ public class SlotMachineController implements Serializable {
 			theView.setCredit(newCredit);
 			theView.setBetAmount(newBet);
 		} else {
-			theView.setErrMsg("You have no credits");
-		}
-	}
-
-	/*
-	 * Controls the "Bet Max" button operation.Add three coins for bet area if
-	 * credits>2 and reduce three coins from Credit Area
-	 */
-	public void betMaxControl() {
-		double credit = theView.getCredit();
-		if (credit > 2.00) {
-			double oldBet = theView.getBetAmount();
-			double newCredit = theModel.betMax(credit, oldBet);
-			theView.setCredit(newCredit);
-			theView.setBetAmount(3.00);
-		} else {
-			theView.setErrMsg("You have less than 3 credits");
+			theView.setErrMsg("Du hast kein Kapital mehr.");
 		}
 	}
 
@@ -154,7 +134,7 @@ public class SlotMachineController implements Serializable {
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
 				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
 				theView.setCredit(newCredits);
-				theView.setErrMsg("Du hast: CHF " + wonCredits + "0 Gewonnen!");
+				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("3x 7");
 			} else if (result1 && result2) {
 				theView.setBetAmount(INITIALBET);
@@ -162,14 +142,14 @@ public class SlotMachineController implements Serializable {
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
 				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
 				theView.setCredit(newCredits);
-				theView.setErrMsg("Du hast: CHF " + wonCredits + "0 Gewonnen!");
+				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 			} else if (sym1.getValue() == 7 && sym2.getValue() == 7 || sym2.getValue() == 7 && sym3.getValue() == 7) {
 				theView.setBetAmount(INITIALBET);
 				double symbolAmnt = 2.00;
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
 				double wonCredits = newCredits - (credits + (symbolAmnt * betAmnt));
 				theView.setCredit(newCredits);
-				theView.setErrMsg("Du hast: CHF " + wonCredits + "0 Gewonnen!");
+				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("2x 7");
 			} else if (sym1.getValue() == 7  || sym2.getValue() == 7 || sym3.getValue() == 7) {
 				theView.setBetAmount(INITIALBET);
@@ -177,7 +157,7 @@ public class SlotMachineController implements Serializable {
 				double newCredits = theModel.addWinningCoins(credits, betAmnt, symbolAmnt);
 				double wonCredits = newCredits - (credits + betAmnt);
 				theView.setCredit(newCredits);
-				theView.setErrMsg("Du hast: CHF " + wonCredits + "0 Gewonnen!");
+				theView.setErrMsg("Du hast CHF " + wonCredits + "0 gewonnen.");
 				System.out.println("1x 7");
 			} else {
 				theView.setBetAmount(INITIALBET);
@@ -215,15 +195,15 @@ public class SlotMachineController implements Serializable {
 			}
 		} else {
 			theView.buttonControl(true);
-			theView.setErrMsg("You don't have any bet");
+			theView.setErrMsg("Du hast keinen Einsatz festgelegt.");
 		}
 	}
 
 	/* Inner class which is used to create threads */
-	class MyThread extends Thread {
+	static class MyThread extends Thread {
 		private Symbol obj;
-		private Symbol[] symArray;
-		private JLabel label;
+		private final Symbol[] symArray;
+		private final JLabel label;
 
 		/* Declaring the constructor */
 		MyThread(Symbol[] symArray, JLabel label) {

@@ -26,14 +26,9 @@ public class SlotMachineView extends JFrame {
 	/* Defining buttons */
 	private JButton btnAddCoin;
 	private JButton btnBetOne;
-	private JButton btnBetMax;
 	private JButton btnSpin;
 	private JButton btnStop;
 	private JButton btnReset;
-	private JButton btnKapital05;
-	private JButton btnKapital1;
-	private JButton btnKapital2;
-	private JButton	btnKapital5;
 
 	/* Defining borders for selected and unselected stages of the reel labels */
 	private Border unselectedBorder = new MatteBorder(2, 2, 2, 2, Color.GRAY);
@@ -59,8 +54,8 @@ public class SlotMachineView extends JFrame {
 		lblReel3 = new JLabel();
 
 		/* Initializing buttons */
-		btnAddCoin = new JButton("Kapital: CHF +1.00");
-		btnBetOne = new JButton("Einsatz: CHF +1.00");
+		btnAddCoin = new JButton("Kapital: CHF +0.50");
+		btnBetOne = new JButton("Einsatz: CHF +0.50");
 		btnSpin = new JButton("Drehen");
 		btnStop = new JButton("Stopp");
 		btnReset = new JButton("Auszahlen");
@@ -224,7 +219,6 @@ public class SlotMachineView extends JFrame {
 	public void buttonControl(boolean flag) {
 		btnAddCoin.setEnabled(flag);
 		btnBetOne.setEnabled(flag);
-		btnBetMax.setEnabled(flag);
 		btnSpin.setEnabled(flag);
 		btnStop.setEnabled(flag);
 		btnReset.setEnabled(flag);
