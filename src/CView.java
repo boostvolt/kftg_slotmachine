@@ -1,11 +1,9 @@
-/*******************************************************************************
- *
+/*
  * CView.java
  * EinarmigerBandit
  *
  * Copyright © 2021 Jan Kott. All rights reserved.
- *
- ******************************************************************************/
+ */
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

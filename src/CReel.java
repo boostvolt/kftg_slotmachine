@@ -1,11 +1,9 @@
-/*******************************************************************************
- *
+/*
  * CReel.java
  * EinarmigerBandit
  *
  * Copyright © 2021 Jan Kott. All rights reserved.
- *
- ******************************************************************************/
+ */
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

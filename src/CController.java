@@ -1,11 +1,9 @@
-/*******************************************************************************
- *
+/*
  * CController.java
  * EinarmigerBandit
  *
  * Copyright © 2021 Jan Kott. All rights reserved.
- *
- ******************************************************************************/
+ */
 
 import java.io.Serializable;
 import javax.swing.JLabel;

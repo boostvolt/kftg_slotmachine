@@ -1,11 +1,9 @@
-/*******************************************************************************
- *
+/*
  * CSymbol.java
  * EinarmigerBandit
  *
  * Copyright © 2021 Jan Kott. All rights reserved.
- *
- ******************************************************************************/
+ */
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
