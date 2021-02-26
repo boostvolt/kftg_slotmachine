@@ -1,14 +1,22 @@
+/*******************************************************************************
+ *
+ * CSymbol.java
+ * EinarmigerBandit
+ *
+ * Copyright © 2021 Jan Kott. All rights reserved.
+ *
+ ******************************************************************************/
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class Symbol implements ISymbol {
+public class CSymbol implements ISymbol {
 	/*Declaring the private variables to hold the value and the image of the Symbol Object */
-	private int value;
+	private final int value;
 	private ImageIcon image;
 	
 	/* Declaring the constructor for the type Symbol*/
-	public Symbol(int value,String url){
+	public CSymbol(int value, String url){
 		this.value=value;
 		this.setImage(url);
 	}
@@ -31,7 +39,7 @@ public class Symbol implements ISymbol {
 	}
 	
 	/*Compares two Symbol objects and returns true if both objects have same Value. Returns false if not */
-	public boolean compareSymbols(Symbol obj1,Symbol obj2){
+	public boolean compareSymbols(CSymbol obj1, CSymbol obj2){
 		return obj1.value==obj2.value;	
 	}
 }
