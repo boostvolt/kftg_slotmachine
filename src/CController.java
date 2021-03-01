@@ -99,13 +99,7 @@ public class CController implements Serializable {
         view.setCapital(0.00);
     }
 
-    /*
-     * Checks whether pictures displayed in the reel label are same or not. If 3
-     * reel labels are matching corresponding values are added to credit area.
-     * If 2 reel labels are matching another spinning chance is given. If no
-     * reel labels are matching bet amount is reduced from credit area. This
-     * process happens if the spin is true.
-     */
+    /* Prüft, ob die im Reel angezeigten Symbole gleich sind oder nicht. */
     public void winCalculator() {
         if (spin) {
             double stakeAmount = view.getStakeAmount();
@@ -118,6 +112,7 @@ public class CController implements Serializable {
 
             double capital = view.getCapital();
             spin = false;
+            // 3x das Symbol "Sieben" multipliziert den Einsatz x4
             if (symbol1.getValue() == 7 && symbol2.getValue() == 7 && symbol3.getValue() == 7) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 4.00;
@@ -125,6 +120,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+            // 3x ein beliebiges Symbol multipliziert den Einsatz x2
             } else if (result1 && result2) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 2.00;
@@ -132,6 +128,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+            // 2x das Symbol "Sieben" multipliziert den Einsatz x2
             } else if (symbol1.getValue() == 7 && symbol2.getValue() == 7 || symbol2.getValue() == 7 && symbol3.getValue() == 7 || symbol1.getValue() == 7 && symbol3.getValue() == 7) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 2.00;
@@ -139,6 +136,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+            // 1x das Symbol "Sieben" multipliziert den Einsatz x1
             } else if (symbol1.getValue() == 7 || symbol2.getValue() == 7 || symbol3.getValue() == 7) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 1.00;
@@ -146,6 +144,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+            // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
             } else {
                 view.setStakeAmount(initialStake);
                 view.setInfoMessage(gameover);

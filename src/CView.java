@@ -11,56 +11,50 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
-
 public class CView extends JFrame {
 
-	/* Defining labels */
-	private final JLabel labelStakeAmountDisplay;
-	private final JLabel labelStakeAmount;
+	/* Definiert Jlabels */
+	private final JLabel labelStakeDisplay;
+	private final JLabel labelStake;
 	private final JLabel labelCapitalDisplay;
 	private final JLabel labelCapital;
 	private final JLabel labelInfoMessage;
 
-	/* Defining labels for 3 reels */
+	/* Definiert Jlabel für 3 Reels */
 	private final JLabel labelReel1;
 	private final JLabel labelReel2;
 	private final JLabel labelReel3;
 
-	/* Defining buttons */
+	/* Definiert JButtons */
 	private final JButton buttonAddCapital;
 	private final JButton buttonAddStake;
 	private final JButton buttonSpin;
 	private final JButton buttonStop;
 	private final JButton buttonPayOut;
 
-	/* Defining borders for selected and unselected stages of the reel labels */
-	private final Border borderUnselected = new MatteBorder(2, 2, 2, 2, Color.GRAY);
-
-	/* Declaring the constructor and calling the relevant methods to execute. In here the main JFrame is created */
+	/* Deklariert den Konstruktor und ruft die entsprechenden Methoden zur Ausführung auf. Hier wird der mainPanel erzeugt */
 	public CView() {
 
-		/* Initializing labels */
-		labelStakeAmountDisplay = new JLabel("Einsatz: CHF ");
-		labelStakeAmount = new JLabel();
+		/* Initialisiert JLabels */
+		labelStakeDisplay = new JLabel("Einsatz: CHF ");
+		labelStake = new JLabel();
 		labelCapitalDisplay = new JLabel("Kapital: CHF ");
 		labelCapital = new JLabel();
 		labelInfoMessage = new JLabel("");
 
-		/* Initializing labels for 3 reels */
+		/* Initialisiert JLabels für 3 Reels */
 		labelReel1 = new JLabel();
 		labelReel2 = new JLabel();
 		labelReel3 = new JLabel();
 
-		/* Initializing buttons */
+		/* Initialisiert JButtons */
 		buttonAddCapital = new JButton("Kapital CHF +0.50");
 		buttonAddStake = new JButton("Einsatz CHF +0.50");
 		buttonSpin = new JButton("Drehen");
 		buttonStop = new JButton("Stopp");
 		buttonPayOut = new JButton("Auszahlen");
 
-		/* Defining main JPanel to hold sub JPanel components */
+		/* Definiert das mainPanel zur Aufnahme von Unter-JPanel-Komponenten */
 		JPanel mainPanel = new JPanel();
 		createView(mainPanel);
 
@@ -70,7 +64,7 @@ public class CView extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-		/* Adding a window listener to close the Application when clicking the exit button */
+		/* Fenster-Listeners zum Schliessen der Anwendung beim Klicken auf die Schaltfläche "Beenden" */
 		this.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent event) {
@@ -79,12 +73,12 @@ public class CView extends JFrame {
 		});
 	}
 
-	/* Setter method for lblErrMsg label. This lblErrMsg label displays all the related messages */
+	/* Setter-Methode für das JLabel labelInfoMessage. Dieses Label zeigt alle zugehörigen Meldungen an */
 	public void setInfoMessage(String message) {
 		this.labelInfoMessage.setText(message);
 	}
 
-	/* Getter methods for Reel labels */
+	/* Getter-Methoden für Reel JLabels */
 	public JLabel getLabelReel1() {
 		return this.labelReel1;
 	}
@@ -97,7 +91,7 @@ public class CView extends JFrame {
 		return this.labelReel3;
 	}
 
-	/* Defining getter methods for buttons */
+	/* Getter-Methoden für JButtons */
 	public JButton getButtonAddCapital() {
 		return buttonAddCapital;
 	}
@@ -118,14 +112,14 @@ public class CView extends JFrame {
 		return buttonPayOut;
 	}
 
-	/* Getter and Setter methods for lblBetAmount and lblCredit labels */
+	/* Getter- und Setter-Methoden für die das JLabel labelStake und labelCapital */
 	public double getStakeAmount() {
-		return Double.parseDouble(labelStakeAmount.getText());
+		return Double.parseDouble(labelStake.getText());
 	}
 
 	public void setStakeAmount(double betAmount) {
 		String betAmountString = String.format("%.2f", betAmount);
-		this.labelStakeAmount.setText(betAmountString);
+		this.labelStake.setText(betAmountString);
 	}
 
 	public double getCapital() {
@@ -137,10 +131,10 @@ public class CView extends JFrame {
 		this.labelCapital.setText(creditAmountString);
 	}
 
-	/* Creating sub panels and adding components to them */
+	/* Unterpanels zum Hinzufügen von Komponenten zu diesen */
 	public void createView(JPanel mainPanel) {
 
-		/* Defining JPanels to hold components */
+		/* Definiert JPanels zur Aufnahme von Komponenten */
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
 		JPanel panel3 = new JPanel();
@@ -159,11 +153,11 @@ public class CView extends JFrame {
 		panel1.add(labelInfoMessage);
 
 		panel2.setLayout(new GridLayout(1, 4));
-		labelStakeAmountDisplay.setHorizontalAlignment(JLabel.RIGHT);
+		labelStakeDisplay.setHorizontalAlignment(JLabel.RIGHT);
 		labelCapitalDisplay.setHorizontalAlignment(JLabel.RIGHT);
 
-		panel2.add(labelStakeAmountDisplay);
-		panel2.add(labelStakeAmount);
+		panel2.add(labelStakeDisplay);
+		panel2.add(labelStake);
 		panel2.add(labelCapitalDisplay);
 		panel2.add(labelCapital);
 		panel1.add(panel2);
@@ -173,10 +167,6 @@ public class CView extends JFrame {
 		labelReel1.setHorizontalAlignment(JLabel.CENTER);
 		labelReel2.setHorizontalAlignment(JLabel.CENTER);
 		labelReel3.setHorizontalAlignment(JLabel.CENTER);
-
-		//labelReel1.setBorder(borderUnselected);
-		//labelReel2.setBorder(borderUnselected);
-		//labelReel3.setBorder(borderUnselected);
 
 		panel3.add(labelReel1);
 		panel3.add(labelReel2);
