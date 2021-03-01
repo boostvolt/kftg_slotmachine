@@ -15,7 +15,7 @@ public class CController implements Serializable {
     private final CModel model;
     private static final int initialCapital = 10;
     private static final int initialStake = 0;
-    private static final String gameover = "Du hast leider nichts gewonnen.";
+    private static final String insufficientCapital = "Du hast leider nichts gewonnen.";
 
     /* Deklarieren der Threads, welche für die Animation der Rollen verwendet werden sollen */
     private thread thread1;
@@ -147,7 +147,7 @@ public class CController implements Serializable {
                 // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
             } else {
                 view.setStakeAmount(initialStake);
-                view.setInfoMessage(gameover);
+                view.setInfoMessage(insufficientCapital);
             }
         }
     }
