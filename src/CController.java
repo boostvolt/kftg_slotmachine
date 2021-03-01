@@ -120,7 +120,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
-            // 3x ein beliebiges Symbol multipliziert den Einsatz x2
+                // 3x ein beliebiges Symbol multipliziert den Einsatz x2
             } else if (result1 && result2) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 2.00;
@@ -128,7 +128,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
-            // 2x das Symbol "Sieben" multipliziert den Einsatz x2
+                // 2x das Symbol "Sieben" multipliziert den Einsatz x2
             } else if (symbol1.getValue() == 7 && symbol2.getValue() == 7 || symbol2.getValue() == 7 && symbol3.getValue() == 7 || symbol1.getValue() == 7 && symbol3.getValue() == 7) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 2.00;
@@ -136,7 +136,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
-            // 1x das Symbol "Sieben" multipliziert den Einsatz x1
+                // 1x das Symbol "Sieben" multipliziert den Einsatz x1
             } else if (symbol1.getValue() == 7 || symbol2.getValue() == 7 || symbol3.getValue() == 7) {
                 view.setStakeAmount(initialStake);
                 double symbolAmount = 1.00;
@@ -144,7 +144,7 @@ public class CController implements Serializable {
                 double wonStake = newCapital - capital;
                 view.setCapital(newCapital);
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
-            // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
+                // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
             } else {
                 view.setStakeAmount(initialStake);
                 view.setInfoMessage(gameover);
@@ -174,9 +174,9 @@ public class CController implements Serializable {
                 thread3.start();
                 spin = true;
             } else if (spin) {
-                thread1.stop();
-                thread2.stop();
-                thread3.stop();
+                thread1.interrupt();
+                thread2.interrupt();
+                thread3.interrupt();
             }
         } else {
             view.setInfoMessage("Du hast keinen Einsatz festgelegt.");
@@ -202,16 +202,20 @@ public class CController implements Serializable {
 
         @Override
         public void run() {
-            for (int i = 0; i <= symbolArray.length; i++) {
+            while (!Thread.currentThread().isInterrupted()) {
                 try {
-                    object = symbolArray[i];
-                    label.setIcon(symbolArray[i].getSymbol());
-                    Thread.sleep(100);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    // Wenn i = 6, wird eine ArrayIndexOutOfBoundsException geworfen. Das macht dann i = 0
-                    i = 0;
+                    for (int i = 0; i <= symbolArray.length; i++) {
+                        try {
+                            object = symbolArray[i];
+                            label.setIcon(symbolArray[i].getSymbol());
+                            Thread.sleep(100);
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            // Wenn i = 6, wird eine ArrayIndexOutOfBoundsException geworfen. Das macht dann i = 0
+                            i = 0;
+                        }
+                    }
                 } catch (InterruptedException e) {
-                    System.out.println("InterruptedException");
+                    Thread.currentThread().interrupt();
                 }
             }
         }
