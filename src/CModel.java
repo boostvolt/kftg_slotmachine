@@ -9,22 +9,22 @@ import java.io.Serializable;
 
 public class CModel implements Serializable {
 
-	/* Increase the credit value by one and returns the new credit value */
+	/* Erhöht das Kapital um 0.50 CHF und gibt das neue Kapital zurück */
 	public double addCapital(double capital) {
 		return capital + 0.50;
 	}
 
-	/* Decrease the credit value by one and returns the new credit value */
+	/* Verinngert das Kapital um 0.50 CHF und gibt das neue Kapital zurück */
 	public double removeCapital(double capital) {
 		return capital - 0.50;
 	}
 
-	/* Increase the bet amount by one and returns the new bet value */
+	/* Erhöht den Einsatz um 0.50 CHF und gibt den neuen Einsatz zurück */
 	public double addStake(double stakeAmount) {
 		return stakeAmount + 0.50;
 	}
 
-	 /* Adds winning credits to the existing credits and returns the new credit value */
+	/* Addiert gewonnener Einsatz zum vorhandenen Kapital und gibt das neue Kapital zurück */
 	public double addWinningStake(double capital, double stakeAmount, double symbolAmount) {
 		return stakeAmount * symbolAmount + capital;
 	}

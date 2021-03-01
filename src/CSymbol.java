@@ -9,35 +9,37 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class CSymbol implements ISymbol {
-	/*Declaring the private variables to hold the value and the image of the Symbol Object */
+
+	/* Deklariert die privaten Variablen zur Aufnahme des Wertes und des Bildes des Symbolobjekts */
 	private final int value;
-	private ImageIcon image;
-	
-	/* Declaring the constructor for the type Symbol*/
-	public CSymbol(int value, String url){
-		this.value=value;
-		this.setImage(url);
-	}
-	/*Setter method for the image of the Symbol object*/
-	@Override
-	public void setImage(String url){
-		this.image= new ImageIcon(new ImageIcon(url).getImage().getScaledInstance(100,100, Image.SCALE_SMOOTH));
+	private ImageIcon symbol;
+
+	/* Deklarieren des Konstruktors für den Typ Symbol */
+	public CSymbol(int value, String path) {
+		this.value = value;
+		this.setSymbol(path);
 	}
 
-	/*Returns the image of the Symbol object*/
+	/* Setter-Methode für das Bild des Symbol-Objekts */
 	@Override
-	public ImageIcon getImage(){
-		return this.image;
+	public void setSymbol(String path) {
+		this.symbol = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 	}
 
-	/*Returns the value of the Symbol object*/
+	/* Gibt das Bild des Symbol-Objekts zurück */
 	@Override
-	public int getValue(){
+	public ImageIcon getSymbol() {
+		return this.symbol;
+	}
+
+	/* Gibt den Wert des Symbol-Objekts zurück */
+	@Override
+	public int getValue() {
 		return this.value;
 	}
-	
-	/*Compares two Symbol objects and returns true if both objects have same Value. Returns false if not */
-	public boolean compareSymbols(CSymbol obj1, CSymbol obj2){
-		return obj1.value==obj2.value;	
+
+	/* Vergleicht zwei Symbol-Objekte und gibt true zurück, wenn beide Objekte den gleichen Wert haben. Gibt false zurück, wenn nicht */
+	public boolean compareSymbols(CSymbol object1, CSymbol object2) {
+		return object1.value == object2.value;
 	}
 }

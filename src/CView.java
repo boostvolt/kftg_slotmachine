@@ -21,7 +21,7 @@ public class CView extends JFrame {
 	private final JLabel labelStakeAmount;
 	private final JLabel labelCapitalDisplay;
 	private final JLabel labelCapital;
-	private final JLabel labelErrorMessage;
+	private final JLabel labelInfoMessage;
 
 	/* Defining labels for 3 reels */
 	private final JLabel labelReel1;
@@ -40,13 +40,13 @@ public class CView extends JFrame {
 
 	/* Declaring the constructor and calling the relevant methods to execute. In here the main JFrame is created */
 	public CView() {
-		
+
 		/* Initializing labels */
 		labelStakeAmountDisplay = new JLabel("Einsatz: CHF ");
 		labelStakeAmount = new JLabel();
 		labelCapitalDisplay = new JLabel("Kapital: CHF ");
 		labelCapital = new JLabel();
-		labelErrorMessage = new JLabel("Error");
+		labelInfoMessage = new JLabel("");
 
 		/* Initializing labels for 3 reels */
 		labelReel1 = new JLabel();
@@ -54,12 +54,12 @@ public class CView extends JFrame {
 		labelReel3 = new JLabel();
 
 		/* Initializing buttons */
-		buttonAddCapital = new JButton("Kapital: CHF +0.50");
-		buttonAddStake = new JButton("Einsatz: CHF +0.50");
+		buttonAddCapital = new JButton("Kapital CHF +0.50");
+		buttonAddStake = new JButton("Einsatz CHF +0.50");
 		buttonSpin = new JButton("Drehen");
 		buttonStop = new JButton("Stopp");
 		buttonPayOut = new JButton("Auszahlen");
-		
+
 		/* Defining main JPanel to hold sub JPanel components */
 		JPanel mainPanel = new JPanel();
 		createView(mainPanel);
@@ -80,8 +80,8 @@ public class CView extends JFrame {
 	}
 
 	/* Setter method for lblErrMsg label. This lblErrMsg label displays all the related messages */
-	public void setErrorMessage(String message) {
-		this.labelErrorMessage.setText(message);
+	public void setInfoMessage(String message) {
+		this.labelInfoMessage.setText(message);
 	}
 
 	/* Getter methods for Reel labels */
@@ -96,7 +96,7 @@ public class CView extends JFrame {
 	public JLabel getLabelReel3() {
 		return this.labelReel3;
 	}
-	
+
 	/* Defining getter methods for buttons */
 	public JButton getButtonAddCapital() {
 		return buttonAddCapital;
@@ -136,10 +136,10 @@ public class CView extends JFrame {
 		String creditAmountString = String.format("%.2f", score);
 		this.labelCapital.setText(creditAmountString);
 	}
-	
+
 	/* Creating sub panels and adding components to them */
 	public void createView(JPanel mainPanel) {
-		
+
 		/* Defining JPanels to hold components */
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
@@ -147,7 +147,7 @@ public class CView extends JFrame {
 		JPanel panel4 = new JPanel();
 		JPanel panel5 = new JPanel();
 
-		String url = "Images/seven.png";
+		String url = "images/seven.png";
 		ImageIcon imgObj = new ImageIcon(
 				new ImageIcon(url).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
 		labelReel1.setIcon(imgObj);
@@ -155,8 +155,8 @@ public class CView extends JFrame {
 		labelReel3.setIcon(imgObj);
 
 		panel1.setLayout(new GridLayout(2, 1));
-		labelErrorMessage.setHorizontalAlignment(JLabel.CENTER);
-		panel1.add(labelErrorMessage);
+		labelInfoMessage.setHorizontalAlignment(JLabel.CENTER);
+		panel1.add(labelInfoMessage);
 
 		panel2.setLayout(new GridLayout(1, 4));
 		labelStakeAmountDisplay.setHorizontalAlignment(JLabel.RIGHT);

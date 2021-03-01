@@ -9,11 +9,11 @@ import javax.swing.ImageIcon;
 
 public interface ISymbol {
 	/* Setter-Methode für das Bild des Symbol-Objekts */
-	void setImage(String url);
+	void setSymbol(String path);
 
-	/* Liefert das Bild des Symbol-Objekts */
-	ImageIcon getImage();
+	/* Gibt das Bild des Symbol-Objekts zurück */
+	ImageIcon getSymbol();
 
-	/* Liefert den Wert des Symbol-Objekts */
+	/* Gibt den Wert des Symbol-Objekts zurück */
 	int getValue();
 }
