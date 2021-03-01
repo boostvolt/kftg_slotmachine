@@ -174,9 +174,9 @@ public class CView extends JFrame {
 		labelReel2.setHorizontalAlignment(JLabel.CENTER);
 		labelReel3.setHorizontalAlignment(JLabel.CENTER);
 
-		labelReel1.setBorder(borderUnselected);
-		labelReel2.setBorder(borderUnselected);
-		labelReel3.setBorder(borderUnselected);
+		//labelReel1.setBorder(borderUnselected);
+		//labelReel2.setBorder(borderUnselected);
+		//labelReel3.setBorder(borderUnselected);
 
 		panel3.add(labelReel1);
 		panel3.add(labelReel2);
