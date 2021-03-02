@@ -12,6 +12,6 @@ public class CMain {
 		CView view = new CView();
 		CModel model = new CModel();
 		CController controller = new CController(view, model);
-		controller.initialise();
+		controller.initializeController();
 	}
 }

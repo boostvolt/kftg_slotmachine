@@ -56,7 +56,7 @@ public class CView extends JFrame {
 
 		/* Definiert das mainPanel zur Aufnahme von Unter-JPanel-Komponenten */
 		JPanel mainPanel = new JPanel();
-		createView(mainPanel);
+		initializeView(mainPanel);
 
 		this.setTitle("Einarmiger Bandit");
 		this.add(mainPanel);
@@ -132,7 +132,7 @@ public class CView extends JFrame {
 	}
 
 	/* Unterpanels zum Hinzufügen von Komponenten zu diesen */
-	public void createView(JPanel mainPanel) {
+	public void initializeView(JPanel mainPanel) {
 
 		/* Definiert JPanels zur Aufnahme von Komponenten */
 		JPanel panel1 = new JPanel();

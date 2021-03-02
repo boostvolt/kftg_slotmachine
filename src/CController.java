@@ -32,7 +32,7 @@ public class CController implements Serializable {
     }
 
     /* Initialisierung der relevanten Attribute */
-    public void initialise() {
+    public void initializeController() {
         view.setCapital(initialCapital);
         view.setStakeAmount(initialStake);
         view.setInfoMessage("Willkommen im Einarmigen Bandit von Jan Kott.");
@@ -57,11 +57,11 @@ public class CController implements Serializable {
             view.setInfoMessage("");
             threadControl(true);
         });
-        // Wenn der Button "Stopp" ausgewählt ist, wird die Methode winCalculator() aufgerufen
+        // Wenn der Button "Stopp" ausgewählt ist, wird die Methode calculateWin() aufgerufen
         view.getButtonStop().addActionListener(e -> {
             view.setInfoMessage("");
             threadControl(false);
-            winCalculator();
+            calculateWin();
         });
         // Wenn der Button "Auszahlen" ausgewählt ist, wird die Methode payOut() aufruft
         view.getButtonPayOut().addActionListener(e -> {
@@ -100,7 +100,7 @@ public class CController implements Serializable {
     }
 
     /* Prüft, ob die im Reel angezeigten Symbole gleich sind oder nicht. */
-    public void winCalculator() {
+    public void calculateWin() {
         if (spin) {
             double stakeAmount = view.getStakeAmount();
             CSymbol symbol1 = thread1.getObject();
