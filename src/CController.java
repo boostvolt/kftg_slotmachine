@@ -34,7 +34,7 @@ public class CController implements Serializable {
     /* Initialisierung der relevanten Attribute */
     public void initializeController() {
         view.setCapital(initialCapital);
-        view.setStakeAmount(initialStake);
+        view.setStake(initialStake);
         view.setInfoMessage("Willkommen im Einarmigen Bandit von Jan Kott.");
         this.actionListenerCreator();
         view.setVisible(true);
@@ -81,11 +81,11 @@ public class CController implements Serializable {
     public void addStakeControl() {
         double capital = view.getCapital();
         if (capital > 0.00) {
-            double oldStake = view.getStakeAmount();
+            double oldStake = view.getStake();
             double newStake = model.addStake(oldStake);
             double newCapital = model.removeCapital(capital);
             view.setCapital(newCapital);
-            view.setStakeAmount(newStake);
+            view.setStake(newStake);
         } else {
             view.setInfoMessage("Du hast kein Kapital mehr.");
         }
@@ -94,15 +94,15 @@ public class CController implements Serializable {
     /* Steuert die Funktion des Buttons "Auszahlen". Setzt das Kapital und der Einsatz auf 0 */
     public void payOut() {
         double existingCredit = view.getCapital();
-        view.setCapital(existingCredit + view.getStakeAmount());
-        view.setStakeAmount(0.00);
+        view.setCapital(existingCredit + view.getStake());
+        view.setStake(0.00);
         view.setCapital(0.00);
     }
 
     /* Prüft, ob die im Reel angezeigten Symbole gleich sind oder nicht. */
     public void calculateWin() {
         if (spin) {
-            double stakeAmount = view.getStakeAmount();
+            double stakeAmount = view.getStake();
             CSymbol symbol1 = thread1.getObject();
             CSymbol symbol2 = thread2.getObject();
             CSymbol symbol3 = thread3.getObject();
@@ -114,7 +114,7 @@ public class CController implements Serializable {
             spin = false;
             // 3x das Symbol "Sieben" multipliziert den Einsatz x4
             if (symbol1.getValue() == 7 && symbol2.getValue() == 7 && symbol3.getValue() == 7) {
-                view.setStakeAmount(initialStake);
+                view.setStake(initialStake);
                 double symbolAmount = 4.00;
                 double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
@@ -122,7 +122,7 @@ public class CController implements Serializable {
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 3x ein beliebiges Symbol multipliziert den Einsatz x2
             } else if (result1 && result2) {
-                view.setStakeAmount(initialStake);
+                view.setStake(initialStake);
                 double symbolAmount = 2.00;
                 double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
@@ -130,7 +130,7 @@ public class CController implements Serializable {
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 2x das Symbol "Sieben" multipliziert den Einsatz x2
             } else if (symbol1.getValue() == 7 && symbol2.getValue() == 7 || symbol2.getValue() == 7 && symbol3.getValue() == 7 || symbol1.getValue() == 7 && symbol3.getValue() == 7) {
-                view.setStakeAmount(initialStake);
+                view.setStake(initialStake);
                 double symbolAmount = 2.00;
                 double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
@@ -138,7 +138,7 @@ public class CController implements Serializable {
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 1x das Symbol "Sieben" multipliziert den Einsatz x1
             } else if (symbol1.getValue() == 7 || symbol2.getValue() == 7 || symbol3.getValue() == 7) {
-                view.setStakeAmount(initialStake);
+                view.setStake(initialStake);
                 double symbolAmount = 1.00;
                 double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
@@ -146,7 +146,7 @@ public class CController implements Serializable {
                 view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
             } else {
-                view.setStakeAmount(initialStake);
+                view.setStake(initialStake);
                 view.setInfoMessage(insufficientCapital);
             }
         }
@@ -154,7 +154,7 @@ public class CController implements Serializable {
 
     /* Startet und stoppt Threads entsprechend dem Wert des booleschen Flags */
     public void threadControl(boolean flag) {
-        double stakeAmount = view.getStakeAmount();
+        double stakeAmount = view.getStake();
         if (stakeAmount > 0.00) {
             if (flag) {
                 CReel reel1 = new CReel();

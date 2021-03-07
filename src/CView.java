@@ -113,22 +113,22 @@ public class CView extends JFrame {
 	}
 
 	/* Getter- und Setter-Methoden für die das JLabel labelStake und labelCapital */
-	public double getStakeAmount() {
+	public double getStake() {
 		return Double.parseDouble(labelStake.getText());
 	}
 
-	public void setStakeAmount(double betAmount) {
-		String betAmountString = String.format("%.2f", betAmount);
-		this.labelStake.setText(betAmountString);
+	public void setStake(double stake) {
+		String stakeString = String.format("%.2f", stake);
+		this.labelStake.setText(stakeString);
 	}
 
 	public double getCapital() {
 		return Double.parseDouble(labelCapital.getText());
 	}
 
-	public void setCapital(double score) {
-		String creditAmountString = String.format("%.2f", score);
-		this.labelCapital.setText(creditAmountString);
+	public void setCapital(double capital) {
+		String capitalString = String.format("%.2f", capital);
+		this.labelCapital.setText(capitalString);
 	}
 
 	/* Unterpanels zum Hinzufügen von Komponenten zu diesen */
