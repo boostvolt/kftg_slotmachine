@@ -32,7 +32,7 @@ public class CView extends JFrame {
 	private final JButton buttonStop;
 	private final JButton buttonPayOut;
 
-	/* Deklariert den Konstruktor und ruft die entsprechenden Methoden zur Ausführung auf. Hier wird der mainPanel erzeugt */
+	/* Deklariert den Konstruktor und ruft die entsprechenden Methoden zur Ausführung auf. Hier wird das mainPanel erzeugt */
 	public CView() {
 
 		/* Initialisiert JLabels */
@@ -57,6 +57,8 @@ public class CView extends JFrame {
 		/* Definiert das mainPanel zur Aufnahme von Unter-JPanel-Komponenten */
 		JPanel mainPanel = new JPanel();
 		initializeView(mainPanel);
+
+		Taskbar.getTaskbar().setIconImage(new ImageIcon("images/icon.png").getImage());
 
 		this.setTitle("Einarmiger Bandit");
 		this.add(mainPanel);
