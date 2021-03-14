@@ -20,8 +20,8 @@ public class CModel implements Serializable {
 	}
 
 	/* Erhöht den Einsatz um 0.50 CHF und gibt den neuen Einsatz zurück */
-	public double addStake(double stakeAmount) {
-		return stakeAmount + 0.50;
+	public double addStake(double stake) {
+		return stake + 0.50;
 	}
 
 	/* Addiert gewonnener Einsatz zum vorhandenen Kapital und gibt das neue Kapital zurück */

@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 public class CController implements Serializable {
 
     /* Deklaration relevanter privater Attribute */
-    private final CView view;
-    private final CModel model;
+    private final CView myView;
+    private final CModel myModel;
     private static final int initialCapital = 10;
     private static final int initialStake = 0;
     private static final String insufficientCapital = "Du hast leider nichts gewonnen.";
@@ -27,82 +27,81 @@ public class CController implements Serializable {
 
     /* Deklarieren des Konstruktors */
     public CController(CView view, CModel model) {
-        this.view = view;
-        this.model = model;
+        this.myView = view;
+        this.myModel = model;
     }
 
     /* Initialisierung der relevanten Attribute */
     public void initializeController() {
-        view.setCapital(initialCapital);
-        view.setStake(initialStake);
-        view.setInfoMessage("Willkommen im Einarmigen Bandit von Jan Kott.");
+        myView.setCapital(initialCapital);
+        myView.setStake(initialStake);
+        myView.setInfoMessage("Willkommen im Einarmigen Bandit von Jan Kott.");
         this.actionListenerCreator();
-        view.setVisible(true);
+        myView.setVisible(true);
     }
 
     /* Action-Listener für Buttons */
     public void actionListenerCreator() {
         // Wenn der Button "Kapital: +0.50 CHF" ausgewählt ist, wird die Methode addCapitalControl() aufgerufen
-        view.getButtonAddCapital().addActionListener(e -> {
-            view.setInfoMessage("Kapital CHF +0.50");
+        myView.getButtonAddCapital().addActionListener(e -> {
+            myView.setInfoMessage("Kapital CHF +0.50");
             addCapitalControl();
         });
         // Wenn der Button "Einsatz: +0.50 CHF" ausgewählt ist, wird die Methode addStakeControl() aufgerufen
-        view.getButtonAddStake().addActionListener(e -> {
-            view.setInfoMessage("Einsatz CHF +0.50");
+        myView.getButtonAddStake().addActionListener(e -> {
+            myView.setInfoMessage("Einsatz CHF +0.50");
             addStakeControl();
         });
         // Wenn der Button "Drehen" ausgewählt ist, wird die Methode threadControl() aufgerufen
-        view.getButtonSpin().addActionListener(e -> {
-            view.setInfoMessage("");
+        myView.getButtonSpin().addActionListener(e -> {
+            myView.setInfoMessage("");
             threadControl(true);
         });
         // Wenn der Button "Stopp" ausgewählt ist, wird die Methode calculateWin() aufgerufen
-        view.getButtonStop().addActionListener(e -> {
-            view.setInfoMessage("");
+        myView.getButtonStop().addActionListener(e -> {
+            myView.setInfoMessage("");
             threadControl(false);
             calculateWin();
         });
         // Wenn der Button "Auszahlen" ausgewählt ist, wird die Methode payOut() aufruft
-        view.getButtonPayOut().addActionListener(e -> {
-            view.setInfoMessage("Kapital wurde ausgezahlt.");
+        myView.getButtonPayOut().addActionListener(e -> {
+            myView.setInfoMessage("Kapital wurde ausgezahlt.");
             payOut();
         });
     }
 
     /* Steuert die Bedienung des Buttons "Kapital: +0.50 CHF". Fügt 0.50 CHF zum Kapital hinzu */
     public void addCapitalControl() {
-        double capital = view.getCapital();
-        double newCapital = model.addCapital(capital);
-        view.setCapital(newCapital);
+        double capital = myView.getCapital();
+        double newCapital = myModel.addCapital(capital);
+        myView.setCapital(newCapital);
     }
 
     /* Steuert die Bedienung des Buttons "Einsatz: + 0.50 CHF". Fügt 0.50 CHF zum Einsatz hinzu, wenn das Kapital grösser als 0 ist und reduziert das Kapital um 0.50 CHF */
     public void addStakeControl() {
-        double capital = view.getCapital();
+        double capital = myView.getCapital();
         if (capital > 0.00) {
-            double oldStake = view.getStake();
-            double newStake = model.addStake(oldStake);
-            double newCapital = model.removeCapital(capital);
-            view.setCapital(newCapital);
-            view.setStake(newStake);
+            double oldStake = myView.getStake();
+            double newStake = myModel.addStake(oldStake);
+            double newCapital = myModel.removeCapital(capital);
+            myView.setCapital(newCapital);
+            myView.setStake(newStake);
         } else {
-            view.setInfoMessage("Du hast kein Kapital mehr.");
+            myView.setInfoMessage("Du hast kein Kapital mehr.");
         }
     }
 
     /* Steuert die Funktion des Buttons "Auszahlen". Setzt das Kapital und der Einsatz auf 0 */
     public void payOut() {
-        double existingCredit = view.getCapital();
-        view.setCapital(existingCredit + view.getStake());
-        view.setStake(0.00);
-        view.setCapital(0.00);
+        double existingCapital = myView.getCapital();
+        myView.setCapital(existingCapital + myView.getStake());
+        myView.setCapital(0.00);
     }
 
     /* Prüft, ob die im Reel angezeigten Symbole gleich sind oder nicht. */
     public void calculateWin() {
         if (spin) {
-            double stakeAmount = view.getStake();
+            double stakeAmount = myView.getStake();
             CSymbol symbol1 = thread1.getObject();
             CSymbol symbol2 = thread2.getObject();
             CSymbol symbol3 = thread3.getObject();
@@ -110,51 +109,51 @@ public class CController implements Serializable {
             boolean result1 = symbol1.compareSymbols(symbol1, symbol2);
             boolean result2 = symbol1.compareSymbols(symbol2, symbol3);
 
-            double capital = view.getCapital();
+            double capital = myView.getCapital();
             spin = false;
             // 3x das Symbol "Sieben" multipliziert den Einsatz x4
             if (symbol1.getValue() == 7 && symbol2.getValue() == 7 && symbol3.getValue() == 7) {
-                view.setStake(initialStake);
+                myView.setStake(initialStake);
                 double symbolAmount = 4.00;
-                double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
+                double newCapital = myModel.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
-                view.setCapital(newCapital);
-                view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+                myView.setCapital(newCapital);
+                myView.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 3x ein beliebiges Symbol multipliziert den Einsatz x2
             } else if (result1 && result2) {
-                view.setStake(initialStake);
+                myView.setStake(initialStake);
                 double symbolAmount = 2.00;
-                double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
+                double newCapital = myModel.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
-                view.setCapital(newCapital);
-                view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+                myView.setCapital(newCapital);
+                myView.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 2x das Symbol "Sieben" multipliziert den Einsatz x2
             } else if (symbol1.getValue() == 7 && symbol2.getValue() == 7 || symbol2.getValue() == 7 && symbol3.getValue() == 7 || symbol1.getValue() == 7 && symbol3.getValue() == 7) {
-                view.setStake(initialStake);
+                myView.setStake(initialStake);
                 double symbolAmount = 2.00;
-                double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
+                double newCapital = myModel.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
-                view.setCapital(newCapital);
-                view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+                myView.setCapital(newCapital);
+                myView.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // 1x das Symbol "Sieben" multipliziert den Einsatz x1
             } else if (symbol1.getValue() == 7 || symbol2.getValue() == 7 || symbol3.getValue() == 7) {
-                view.setStake(initialStake);
+                myView.setStake(initialStake);
                 double symbolAmount = 1.00;
-                double newCapital = model.addWinningStake(capital, stakeAmount, symbolAmount);
+                double newCapital = myModel.addWinningStake(capital, stakeAmount, symbolAmount);
                 double wonStake = newCapital - capital;
-                view.setCapital(newCapital);
-                view.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
+                myView.setCapital(newCapital);
+                myView.setInfoMessage("Du hast CHF " + wonStake + "0 gewonnen.");
                 // Wenn keines der Abfragen zutrifft, geht der Einsatz verloren
             } else {
-                view.setStake(initialStake);
-                view.setInfoMessage(insufficientCapital);
+                myView.setStake(initialStake);
+                myView.setInfoMessage(insufficientCapital);
             }
         }
     }
 
     /* Startet und stoppt Threads entsprechend dem Wert des booleschen Flags */
     public void threadControl(boolean flag) {
-        double stakeAmount = view.getStake();
+        double stakeAmount = myView.getStake();
         if (stakeAmount > 0.00) {
             if (flag) {
                 CReel reel1 = new CReel();
@@ -165,9 +164,9 @@ public class CController implements Serializable {
                 CSymbol[] symbolArray2 = reel2.spin();
                 CSymbol[] symbolArray3 = reel3.spin();
 
-                thread1 = new thread(symbolArray1, view.getLabelReel1());
-                thread2 = new thread(symbolArray2, view.getLabelReel2());
-                thread3 = new thread(symbolArray3, view.getLabelReel3());
+                thread1 = new thread(symbolArray1, myView.getLabelReel1());
+                thread2 = new thread(symbolArray2, myView.getLabelReel2());
+                thread3 = new thread(symbolArray3, myView.getLabelReel3());
 
                 thread1.start();
                 thread2.start();
@@ -179,7 +178,7 @@ public class CController implements Serializable {
                 thread3.interrupt();
             }
         } else {
-            view.setInfoMessage("Du hast keinen Einsatz festgelegt.");
+            myView.setInfoMessage("Du hast keinen Einsatz festgelegt.");
         }
     }
 
