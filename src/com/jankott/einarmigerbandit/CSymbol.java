@@ -5,6 +5,8 @@
  * Copyright © 2021 Jan Kott. All rights reserved.
  */
 
+package com.jankott.einarmigerbandit;
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
