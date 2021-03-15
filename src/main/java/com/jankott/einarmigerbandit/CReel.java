@@ -33,14 +33,14 @@ public class CReel {
     /* Mischt zufällig ein Array vom Typ Symbol */
     private void shuffleArray(CSymbol[] array) {
         //  Ein Zufallszahlengenerator, der für den aktuellen Thread isoliert ist
-        Random rnd = ThreadLocalRandom.current();
+        Random random = ThreadLocalRandom.current();
         for (int i = array.length - 1; i > 0; i--) {
             // Gibt einen zufälligen, gleichmässig verteilten Wert zwischen dem angegebenen kleinsten Wert (einschliesslich) und der Grenze (ausschliesslich) zurück
-            int index = rnd.nextInt(i + 1);
+            int index = random.nextInt(i + 1);
             // Einfacher Tausch
-            CSymbol s = array[index];
+            CSymbol symbol = array[index];
             array[index] = array[i];
-            array[i] = s;
+            array[i] = symbol;
         }
     }
 
