@@ -25,7 +25,7 @@ public class CSymbol implements ISymbol {
     /* Setter-Methode für das Bild des Symbol-Objekts */
     @Override
     public void setSymbol(String path) {
-        this.symbol = new ImageIcon(new ImageIcon(path).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+        this.symbol = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
     }
 
     /* Gibt das Bild des Symbol-Objekts zurück */

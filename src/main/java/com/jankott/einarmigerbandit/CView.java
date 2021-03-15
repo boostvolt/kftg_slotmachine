@@ -60,7 +60,7 @@ public class CView extends JFrame {
         JPanel mainPanel = new JPanel();
         initializeView(mainPanel);
 
-        Taskbar.getTaskbar().setIconImage(new ImageIcon("src/main/resources/icon.png").getImage());
+        Taskbar.getTaskbar().setIconImage(new ImageIcon(getClass().getResource("/icon.png")).getImage());
 
         this.setTitle("Einarmiger Bandit");
         this.add(mainPanel);
@@ -145,9 +145,9 @@ public class CView extends JFrame {
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
 
-        String url = "src/main/resources/symbols/seven.png";
+        String url = "/symbols/seven.png";
         ImageIcon imgObj = new ImageIcon(
-                new ImageIcon(url).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+                new ImageIcon(getClass().getResource(url)).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
         labelReel1.setIcon(imgObj);
         labelReel2.setIcon(imgObj);
         labelReel3.setIcon(imgObj);

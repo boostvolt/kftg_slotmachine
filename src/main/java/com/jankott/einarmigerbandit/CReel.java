@@ -13,12 +13,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CReel {
 
     /* Erstellen von Instanzen des Typs "Symbol" zur Aufnahme verschiedener sechs Symbole */
-    private final CSymbol seven = new CSymbol(7, "src/main/resources/symbols/seven.png");
-    private final CSymbol bell = new CSymbol(6, "src/main/resources/symbols/bell.png");
-    private final CSymbol grape = new CSymbol(5, "src/main/resources/symbols/grape.png");
-    private final CSymbol strawberry = new CSymbol(4, "src/main/resources/symbols/strawberry.png");
-    private final CSymbol coin = new CSymbol(3, "src/main/resources/symbols/coin.png");
-    private final CSymbol cherry = new CSymbol(2, "src/main/resources/symbols/cherry.png");
+    private final CSymbol seven = new CSymbol(7, "/symbols/seven.png");
+    private final CSymbol bell = new CSymbol(6, "/symbols/bell.png");
+    private final CSymbol grape = new CSymbol(5, "/symbols/grape.png");
+    private final CSymbol strawberry = new CSymbol(4, "/symbols/strawberry.png");
+    private final CSymbol coin = new CSymbol(3, "/symbols/coin.png");
+    private final CSymbol cherry = new CSymbol(2, "/symbols/cherry.png");
 
     /* Dieses Array enthält die sechs verschiedenen Symbol-Objekte */
     private final CSymbol[] symbolArray = new CSymbol[6];
