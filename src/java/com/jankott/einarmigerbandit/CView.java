@@ -145,7 +145,7 @@ public class CView extends JFrame {
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
 
-        String url = "src/resources/seven.png";
+        String url = "src/resources/symbols/seven.png";
         ImageIcon imgObj = new ImageIcon(
                 new ImageIcon(url).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
         labelReel1.setIcon(imgObj);
