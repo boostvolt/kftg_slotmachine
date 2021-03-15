@@ -2,9 +2,6 @@
   <artifact type="jar" name="EinarmigerBandit:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/EinarmigerBandit_jar</output-path>
     <root id="archive" name="EinarmigerBandit.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
-      </element>
       <element id="module-output" name="EinarmigerBandit" />
     </root>
   </artifact>

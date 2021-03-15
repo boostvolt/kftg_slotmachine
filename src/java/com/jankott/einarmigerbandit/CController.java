@@ -19,7 +19,7 @@ public class CController implements Serializable {
     private static final int initialStake = 0;
     private static final String insufficientCapital = "Du hast leider nichts gewonnen.";
 
-    /* Deklarieren der Threads, welche für die Animation der Reels verwendet werden sollen */
+    /* Deklarieren der Threads, weslche für die Animation der Reels verwendet werden sollen */
     private thread thread1;
     private thread thread2;
     private thread thread3;
