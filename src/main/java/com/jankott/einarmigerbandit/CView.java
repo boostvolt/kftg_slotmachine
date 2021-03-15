@@ -66,6 +66,7 @@ public class CView extends JFrame {
         this.add(mainPanel);
         this.setSize(500, 500);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         /* Fenster-Listeners zum Schliessen der Anwendung beim Klicken auf die Schaltfläche "Beenden" */
@@ -162,6 +163,7 @@ public class CView extends JFrame {
 
         panel2.add(labelStakeDisplay);
         panel2.add(labelStake);
+        panel2.setBorder(new EmptyBorder(0, 55, 0, 0));
         panel2.add(labelCapitalDisplay);
         panel2.add(labelCapital);
         panel1.add(panel2);

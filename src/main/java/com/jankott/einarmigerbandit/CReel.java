@@ -38,9 +38,9 @@ public class CReel {
             // Gibt einen zufälligen, gleichmässig verteilten Wert zwischen dem angegebenen kleinsten Wert (einschliesslich) und der Grenze (ausschliesslich) zurück
             int index = rnd.nextInt(i + 1);
             // Einfacher Tausch
-            CSymbol a = array[index];
+            CSymbol s = array[index];
             array[index] = array[i];
-            array[i] = a;
+            array[i] = s;
         }
     }
 
