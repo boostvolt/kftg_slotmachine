@@ -41,7 +41,7 @@ public class CSymbol implements ISymbol {
     }
 
     /* Vergleicht zwei Symbol-Objekte und gibt true zurück, wenn beide Objekte den gleichen Wert haben. Gibt false zurück, wenn nicht */
-    public boolean compareSymbols(CSymbol object1, CSymbol object2) {
-        return object1.value == object2.value;
+    public boolean compareSymbols(CSymbol symbol1, CSymbol symbol2) {
+        return symbol1.value == symbol2.value;
     }
 }
